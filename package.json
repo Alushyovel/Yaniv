@@ -1,7 +1,7 @@
 {
   "name": "yaniv",
   "version": "0.1.0",
-  "homepage": "https://alushyovel.github.io/yaniv",
+  "homepage": "https://alushyovel.github.io/Yaniv",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.13.3",
