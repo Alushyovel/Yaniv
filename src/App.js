@@ -1,4 +1,5 @@
 // App.js
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, Grid, Paper, Button, Stack } from '@mui/material';
 import ParticipantsTable from './ParticipantsTable';
@@ -68,37 +69,46 @@ function App() {
   };
 
   return (
-    <Container>
-      <Typography variant="h4" align="center" gutterBottom>
-        Yaniv Game Management
-      </Typography>
-      <Grid container spacing={4}>
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ padding: 2 }}>
-            <Stack direction="row" spacing={2} sx={{ marginBottom: 2 }}>
-              <Button variant="contained" onClick={addParticipant}>
-                Add Participant
-              </Button>
-            </Stack>
-            <ParticipantsTable
-              participants={participants}
-              removeParticipant={removeParticipant}
-            />
-          </Paper>
-        </Grid>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Container>
+              <Typography variant="h4" align="center" gutterBottom>
+                Yaniv Game Management
+              </Typography>
+              <Grid container spacing={4}>
+                <Grid item xs={12} md={6}>
+                  <Paper elevation={3} sx={{ padding: 2 }}>
+                    <Stack direction="row" spacing={2} sx={{ marginBottom: 2 }}>
+                      <Button variant="contained" onClick={addParticipant}>
+                        Add Participant
+                      </Button>
+                    </Stack>
+                    <ParticipantsTable
+                      participants={participants}
+                      removeParticipant={removeParticipant}
+                    />
+                  </Paper>
+                </Grid>
 
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ padding: 2 }}>
-            <MatchesTable
-              participants={participants}
-              matches={matches}
-              setMatches={setMatches}
-              resetMatches={resetMatches}
-            />
-          </Paper>
-        </Grid>
-      </Grid>
-    </Container>
+                <Grid item xs={12} md={6}>
+                  <Paper elevation={3} sx={{ padding: 2 }}>
+                    <MatchesTable
+                      participants={participants}
+                      matches={matches}
+                      setMatches={setMatches}
+                      resetMatches={resetMatches}
+                    />
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Container>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
